@@ -1,0 +1,390 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E PALETA DE CORES (LEIA PARANÁ STYLE)
+   ========================================================================== */
+   * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333333;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Área principal de conteúdo */
+main {
+    flex: 1;
+    padding-bottom: 40px;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO PRINCIPAL (HEADER & NAV)
+   ========================================================================== */
+header {
+    background-color: #1a237e; /* Azul escuro institucional */
+    color: #ffffff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: #ffffff;
+}
+
+/* Painel superior com o nome do usuário logado */
+.usuario-logado {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 0.85em;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.usuario-logado span {
+    color: #ffffff;
+}
+
+.usuario-logado a {
+    margin-left: 12px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.usuario-logado a:hover {
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   3. CATÁLOGO DE LIVROS (PÁGINA INICIAL)
+   ========================================================================== */
+.catalogo-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 30px;
+}
+
+.secao-titulo h2 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin: 0 0 5px 0;
+}
+
+.linha-decorativa {
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #29b6f6; /* Azul claro do detalhe */
+    border-radius: 2px;
+    margin-bottom: 25px;
+}
+
+/* Grade de Livros com capas reduzidas para 140px */
+.grade-leia-parana {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+/* Card individual do livro */
+.card-leia-parana {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.card-leia-parana:hover {
+    transform: scale(1.04);
+}
+
+/* Moldura vertical proporcional para a capa diminuída */
+.moldura-ebook {
+    width: 100%;
+    aspect-ratio: 1 / 1.5; /* Mantém proporção perfeita de livro */
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    background-color: #e0e0e0;
+}
+
+.moldura-ebook img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Textos informativos abaixo da foto */
+.metadados-livro {
+    padding: 8px 2px 0 2px;
+}
+
+.metadados-livro h3 {
+    font-size: 0.88em;
+    margin: 0 0 3px 0;
+    font-weight: 600;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona "..." se o título for muito longo */
+}
+
+.metadados-livro p {
+    font-size: 0.8em;
+    margin: 0;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   4. PÁGINA DE DETALHES DO LIVRO
+   ========================================================================== */
+.detalhes-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.detalhes-bloco {
+    display: flex;
+    gap: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.detalhes-capa {
+    width: 200px; /* Capa um pouco menor também nos detalhes para harmonizar */
+    aspect-ratio: 1 / 1.5;
+    background: #f4f4f4;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.detalhes-capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detalhes-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detalhes-info h2 {
+    font-size: 1.8em;
+    margin: 0 0 10px 0;
+    color: #1e293b;
+}
+
+.detalhes-info p {
+    font-size: 1.05em;
+    color: #475569;
+    margin: 0 0 25px 0;
+}
+
+/* Caixa de ações de Empréstimo/Devolução */
+.acoes-box {
+    margin-bottom: 20px;
+}
+
+.btn-emprestar, .btn-devolver {
+    padding: 12px 28px;
+    font-size: 0.95em;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-emprestar {
+    background-color: #1a237e;
+    color: #ffffff;
+}
+
+.btn-emprestar:hover {
+    background-color: #0d1b60;
+}
+
+.btn-devolver {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-devolver:hover {
+    background-color: #bd2130;
+}
+
+.btn-voltar {
+    display: inline-block;
+    color: #1a237e;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.btn-voltar:hover {
+    text-decoration: underline;
+}
+
+.alerta-indisponivel {
+    background-color: #fff8e1;
+    color: #b78103;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ffe082;
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   5. FORMULÁRIOS (LOGIN, CADASTRO E EDITAR PERFIL)
+   ========================================================================== */
+form {
+    background: #ffffff;
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1a237e;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+form label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #475569;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0 16px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.95em;
+    background-color: #ffffff;
+    color: #333333;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: #1a237e;
+}
+
+form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a237e;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0d1b60;
+}
+
+form p {
+    text-align: center;
+    font-size: 0.9em;
+    color: #64748b;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+form p a {
+    color: #1a237e;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+
+/* Customização específica para a caixinha do Perfil */
+.container-perfil {
+    max-width: 460px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.container-perfil form {
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+.container-perfil .btn-voltar {
+    display: block;
+    text-align: center;
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: #ffffff;
+    color: #64748b;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85em;
+    border-top: 1px solid #e2e8f0;
+    margin-top: auto;
+}
